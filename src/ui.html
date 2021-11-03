@@ -1,0 +1,55 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+  rel="stylesheet"
+/>
+<main class="container">
+  <div>
+    <a id="auth-link" target="_blank" class="link">Authorise your Trello account</a>
+  </div>
+
+  <form id="form">
+    <div class="field">
+      <label>
+        <div class="label">Authorisation code:<span class="required-marker">*</span></div>
+        <div class="input-wrapper">
+          <input id="auth-code" type="text" />
+        </div>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>
+        <div class="label">Board name:<span class="required-marker">*</span></div>
+        <div class="input-wrapper">
+          <input id="board-name" type="text" />
+        </div>
+      </label>
+    </div>
+
+    <button id="run" class="button" type="submit">
+      <span>Submit</span>
+    </button>
+  </form>
+
+  <div id="banner" class="banner hidden">
+    <div class="content">
+      <span class="error-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
+          <g fill-rule="evenodd">
+            <path
+              d="M13.416 4.417a2.002 2.002 0 00-2.832 0l-6.168 6.167a2.002 2.002 0 000 2.833l6.168 6.167a2.002 2.002 0 002.832 0l6.168-6.167a2.002 2.002 0 000-2.833l-6.168-6.167z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M12 14a1 1 0 01-1-1V8a1 1 0 012 0v5a1 1 0 01-1 1m0 3a1 1 0 010-2 1 1 0 010 2"
+              fill="var(--color-error)"
+            ></path>
+          </g>
+        </svg>
+      </span>
+      <span id="banner-msg" class="message"></span>
+    </div>
+  </div>
+</main>
