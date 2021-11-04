@@ -59,6 +59,10 @@ h1 {
   font-size: 14px;
 }
 
+p {
+  font-size: 14px;
+}
+
 /* Button */
 .button {
   -webkit-box-align: baseline;
@@ -168,12 +172,11 @@ h1 {
 
 .link {
   color: rgb(0, 82, 204);
-  font-size: 14px;
-  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .link:hover {
-  text-decoration: underline;
   color: rgb(0, 101, 255);
 }
 

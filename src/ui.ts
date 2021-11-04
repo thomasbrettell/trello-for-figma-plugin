@@ -106,7 +106,7 @@ const hideAlert = () => {
 };
 
 const setup = () => {
-  $authLink.href = `https://trello.com/1/authorize?expiration=1hour&name=Trello%20For%20Figma&scope=read&response_type=token&key=${TRELLO_API_KEY}`;
+  $authLink.href = `https://trello.com/1/authorize?expiration=1hour&name=Trello%20for%20Figma&scope=read&response_type=token&key=${TRELLO_API_KEY}`;
 
   $form?.addEventListener('submit', async (e) => {
     hideAlert();
@@ -117,7 +117,7 @@ const setup = () => {
 
       if (!userAuthCode) {
         throw new Error(
-          'No authorisation code. Use the link above to authorise your Trello account and copy the code into the field.',
+          'No authorisation token. Use the link above to authorise your Trello account and copy the token into the field.',
         );
       }
 
@@ -130,7 +130,7 @@ const setup = () => {
       const usersBoards = await fetchBoardsByUserToken();
       if (!usersBoards) {
         throw new Error(
-          "Couldn't find your account. Are you sure your authorisation code is correct?",
+          "Couldn't find your account. Are you sure your authorisation token is correct?",
         );
       }
 

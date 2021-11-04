@@ -28,7 +28,7 @@ const createBoard = async (boardData: BoardProps) => {
 
   boardData.lists.forEach((list, i) => {
     const listFrame = figma.createFrame();
-    listFrame.name = `List (${list.name})`;
+    listFrame.name = `List - ${list.name}`;
     listFrame.cornerRadius = 3;
     listFrame.resize(272, 30);
     listFrame.x = i * (listFrame.width + 8);
@@ -48,6 +48,7 @@ const createBoard = async (boardData: BoardProps) => {
 
     list.cards.forEach((card) => {
       const cardFrame = figma.createFrame();
+      cardFrame.name = `Card - ${card.name}`;
       cardFrame.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
       cardFrame.cornerRadius = 3;
       cardFrame.layoutMode = 'HORIZONTAL';
@@ -110,4 +111,4 @@ function createRectangle(): void {
 // Show the plugin interface (https://www.figma.com/plugin-docs/creating-ui/)
 // Remove this in case your plugin doesn't need a UI, make network requests, use browser APIs, etc.
 // If you need to make network requests you need an invisible UI (https://www.figma.com/plugin-docs/making-network-requests/)
-figma.showUI(__html__, { width: 350, height: 400 });
+figma.showUI(__html__, { width: 350, height: 330 });
