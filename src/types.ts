@@ -2,6 +2,7 @@ export enum UIActionTypes {
   CLOSE = 'CLOSE',
   NOTIFY = 'NOTIFY',
   CREATE_RECTANGLE = 'CREATE_RECTANGLE',
+  CREATE_BOARD = 'CREATE_BOARD',
 }
 
 export interface UIAction {

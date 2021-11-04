@@ -31,7 +31,7 @@
     "type": "git"
   },
   "devDependencies": {
-    "@types/figma": "^1.0.4",
+    "@figma/plugin-typings": "^1.37.0",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.10.2",
     "@typescript-eslint/eslint-plugin": "^4.32.0",

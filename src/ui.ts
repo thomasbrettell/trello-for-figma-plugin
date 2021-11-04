@@ -1,4 +1,12 @@
-import { WorkerActionTypes, WorkerAction, BoardProps, AlertType, ListProps } from './types';
+import {
+  WorkerActionTypes,
+  WorkerAction,
+  BoardProps,
+  AlertType,
+  ListProps,
+  UIAction,
+  UIActionTypes,
+} from './types';
 const TRELLO_API_KEY = '3dfb8976cc500db09441d2236f4a22c5';
 
 import './ui.css';
@@ -10,6 +18,10 @@ const $authLink = document.getElementById('auth-link') as HTMLAnchorElement;
 const $banner = document.getElementById('banner');
 const $bannerMsg = document.getElementById('banner-msg');
 let userAuthCode: string;
+
+const postMessage = ({ type, payload }: UIAction): void => {
+  parent.postMessage({ pluginMessage: { type, payload } }, '*');
+};
 
 // Listen to messages received from the plugin worker (src/plugin/plugin.ts)
 function listenToPluginMessages(): void {
@@ -150,7 +162,7 @@ const setup = () => {
         }
       }
 
-      console.log(board);
+      postMessage({ type: UIActionTypes.CREATE_BOARD, payload: board });
 
       hideAlert();
     } catch (error) {
