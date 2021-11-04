@@ -1,1 +1,1 @@
-![Trello for Figma](.github/cover.jpg)
+![Trello for Figma](.github/cover.png)
