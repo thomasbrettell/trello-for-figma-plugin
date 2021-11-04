@@ -12,7 +12,7 @@
   --color-bg-resting: #fafbfc;
   --color-input-background-hover: #ebecf0;
   --color-focused-border: #4c9aff;
-  --color-banner-bg: #42526E;
+  --color-banner-bg: #42526e;
 }
 
 /* Fonts */
@@ -204,7 +204,6 @@ p {
 }
 
 .banner .error-icon {
-  display: flex;
   -webkit-box-align: center;
   align-items: center;
   flex: 0 0 auto;
@@ -212,7 +211,7 @@ p {
   display: none;
 }
 
-.banner.error .error-icon{
+.banner.error .error-icon {
   display: block;
 }
 
