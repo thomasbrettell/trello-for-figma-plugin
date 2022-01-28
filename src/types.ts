@@ -3,6 +3,8 @@ export enum UIActionTypes {
   NOTIFY = 'NOTIFY',
   CREATE_RECTANGLE = 'CREATE_RECTANGLE',
   CREATE_BOARD = 'CREATE_BOARD',
+  READ_TOKEN = 'READ_TOKEN',
+  SAVE_TOKEN = 'SAVE_TOKEN',
 }
 
 export interface UIAction {
@@ -13,6 +15,7 @@ export interface UIAction {
 
 export enum WorkerActionTypes {
   CREATE_RECTANGLE_NOTIFY = 'CREATE_RECTANGLE_NOTIFY',
+  READ_TOKEN = 'READ_TOKEN',
 }
 
 export interface WorkerAction {
@@ -21,9 +24,17 @@ export interface WorkerAction {
   payload?: any;
 }
 
+export interface Checkmark {
+  id: string;
+  name: string;
+  state: 'complete' | 'incomplete';
+}
 export interface CardProps {
   name: string;
   id: string;
+  idBoard: string;
+  idList: string;
+  checklist?: Checkmark[];
 }
 
 export interface ListProps {
