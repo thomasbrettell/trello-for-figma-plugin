@@ -156,6 +156,21 @@ p {
   line-height: 1.42857;
 }
 
+.input-wrapper select {
+  padding: 6px 6px;
+  height: 2.57em;
+  background-color: transparent;
+  border: 0px;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: auto;
+  font-size: 14px;
+  min-width: 0px;
+  outline: none;
+  width: 100%;
+}
+
+
 .input-wrapper:focus {
   background-color: white;
   border-color: var(--color-focused-border);

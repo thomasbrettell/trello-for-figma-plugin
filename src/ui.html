@@ -15,22 +15,53 @@
       <label>
         <div class="label">Authorisation token:<span class="required-marker">*</span></div>
         <div class="input-wrapper">
-          <input id="auth-code" type="text" />
+          <input id="auth-code" type="text" value="" />
+        </div>
+      </label>
+    </div>
+
+    <button id="load-boards" class="button">
+      <span>Load boards</span>
+    </button>
+
+    <div class="field">
+      <label>
+        <div class="label">Select board<span class="required-marker">*</span></div>
+        <div class="input-wrapper">
+          <select id="board-name"><option>- Set authorization token -</option></select>
         </div>
       </label>
     </div>
 
     <div class="field">
       <label>
-        <div class="label">Board name:<span class="required-marker">*</span></div>
+        <div class="label">Select list<span class="required-marker">*</span></div>
         <div class="input-wrapper">
-          <input id="board-name" type="text" />
+          <select id="list-name"><option>- Select board -</option></select>
         </div>
       </label>
     </div>
 
-    <button id="run" class="button" type="submit">
-      <span>Submit</span>
+    <div class="field">
+      <label>
+        <div class="label">Select card<span class="required-marker">*</span></div>
+        <div class="input-wrapper">
+          <select id="card-name"><option>- Select list -</option></select>
+        </div>
+      </label>
+    </div>
+
+    <div class="field">
+      <label>
+        <div class="input-wrapper-checkbox">
+          <input id="load-checklist" type="checkbox">
+          <span class="checkbox-label">Load checklist (one card only)</span>
+        </div>
+      </label>
+    </div>
+
+    <button id="run" class="button">
+      <span>Create</span>
     </button>
   </form>
 

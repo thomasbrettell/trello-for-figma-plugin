@@ -13,13 +13,19 @@ figma.ui.onmessage = function ({ type, payload }: UIAction): void {
       createRectangle();
       break;
     case UIActionTypes.CREATE_BOARD:
-      payload && createBoard(payload);
+      payload && createBoard(payload).then(() => figma.closePlugin());
       break;
+    case UIActionTypes.READ_TOKEN:
+      figma.clientStorage.getAsync('authCode').then((payload) => {
+        figma.ui.postMessage({ type: WorkerActionTypes.READ_TOKEN, payload });
+      });
+    case UIActionTypes.SAVE_TOKEN:
+      figma.clientStorage.setAsync('authCode', payload);
   }
 };
 
 const createBoard = async (boardData: BoardProps) => {
-  console.log(boardData);
+  console.log('Got board data', boardData);
 
   const nodes: SceneNode[] = [];
 
@@ -75,9 +81,33 @@ const createBoard = async (boardData: BoardProps) => {
       cardTitle.layoutGrow = 1;
       cardTitle.fontSize = 14;
       cardTitle.textAutoResize = 'HEIGHT';
-
+      cardTitle.fontName = { family: 'Roboto', style: 'Medium' };
       cardFrame.appendChild(cardTitle);
       listFrame.appendChild(cardFrame);
+
+      if (card.checklist) {
+        const checklistFrame = figma.createFrame();
+        checklistFrame.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 }, opacity: 0 }];
+        checklistFrame.name = `Card - ${card.name} - checklist`;
+        checklistFrame.primaryAxisSizingMode = 'AUTO';
+        checklistFrame.layoutMode = 'VERTICAL';
+        cardFrame.layoutAlign = 'STRETCH';
+        checklistFrame.resize(240, card.checklist.length * 18);
+        checklistFrame.itemSpacing = 18;
+        checklistFrame.counterAxisSizingMode = 'AUTO';
+        checklistFrame.paddingLeft = 16;
+        checklistFrame.paddingRight = 10;
+        card.checklist.forEach((check) => {
+          const checkName = (check.state === 'complete' ? '☒ ' : '☐ ') + check.name;
+          const checkTitle = figma.createText();
+          checkTitle.characters = checkName;
+          checkTitle.layoutGrow = 1;
+          checkTitle.fontSize = 12;
+          checkTitle.textAutoResize = 'HEIGHT';
+          checklistFrame.appendChild(checkTitle);
+        });
+        listFrame.appendChild(checklistFrame);
+      }
     });
 
     figma.currentPage.appendChild(listFrame);
@@ -111,4 +141,4 @@ function createRectangle(): void {
 // Show the plugin interface (https://www.figma.com/plugin-docs/creating-ui/)
 // Remove this in case your plugin doesn't need a UI, make network requests, use browser APIs, etc.
 // If you need to make network requests you need an invisible UI (https://www.figma.com/plugin-docs/making-network-requests/)
-figma.showUI(__html__, { width: 350, height: 330 });
+figma.showUI(__html__, { width: 350, height: 450 });
